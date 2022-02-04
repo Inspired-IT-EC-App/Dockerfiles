@@ -1,0 +1,26 @@
+Version: 3.2 
+Services:
+  springapp:
+    image: dockerhandson/spring-boot-mongo:1
+    ports: 
+    - 8080:8080
+    networks:
+    - springappnetwork
+    enviroment:
+    - MONGO_DB_USERNAME=devdb
+    - MONGO_DB_PASSWORD=devdb@123
+    - MONGO_DB_HOSTNAME=mongo
+    container_name: springappcontainer
+   
+  mongo:
+    image: mongo
+    enviroment:
+    - MONGO_INITDB_ROOT_USERNAME=devdb
+    - MONGO_INITDB_ROOT_PASSWORD=devdb@123
+  volumes:
+    mongodbvol:
+      driver: rexray/ebs 
+	
+  networks:
+    springappnetwork: 
+      driver: bridge
