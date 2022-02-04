@@ -20,7 +20,6 @@ Services:
   volumes:
     mongodbvol:
       driver: rexray/ebs 
-	
   networks:
     springappnetwork: 
       driver: bridge
